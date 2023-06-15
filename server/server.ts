@@ -1,13 +1,21 @@
 import express from 'express'
-import { join } from 'node:path'
+import * as Path from 'node:path'
 
-import fruitRoutes from './routes/fruits'
+import questionRoutes from './routes/question'
 
 const server = express()
 
 server.use(express.json())
-server.use(express.static(join(__dirname, 'public')))
 
-server.use('/api/v1/fruits', fruitRoutes)
+server.use('/api/v1/questions', questionRoutes)
+server.use('/api/v1/*', (req, res) => res.sendStatus(404))
+
+if (process.env.NODE_ENV === 'production') {
+  server.use('/assets', express.static(Path.resolve(__dirname, '../assets')))
+
+  server.get('*', (req, res) => {
+    res.sendFile(Path.resolve(__dirname, '../index.html'))
+  })
+}
 
 export default server
