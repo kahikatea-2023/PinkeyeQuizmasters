@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import fruits from './fruits'
+import questions from './questionsSlice'
 
 export default combineReducers({
-  fruits,
+  questions,
 })
