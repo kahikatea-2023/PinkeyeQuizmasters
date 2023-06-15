@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+  font-family: 'ArcadeClassic', sans-serif;
+  font-size: 80px;
+  background-color: #FF00FF;
+  /* color: #cdff03; */
+}
+
+.game-over {
+  margin: auto;
+  margin-top: 180px;
+
+}
