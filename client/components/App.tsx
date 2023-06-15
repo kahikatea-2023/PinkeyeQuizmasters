@@ -1,24 +1,15 @@
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { fetchFruits } from '../slices/fruits'
+import Questions from './Questions'
+import GameOver from './GameOver'
 
 function App() {
-  const fruits = useAppSelector((state) => state.fruits)
-  const dispatch = useAppDispatch()
-  useEffect(() => {
-    dispatch(fetchFruits())
-  }, [dispatch])
-
   return (
     <>
-      <div className="app">
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
-        <ul>
-          {fruits.map((fruit) => (
-            <li key={fruit}>{fruit}</li>
-          ))}
-        </ul>
-      </div>
+      <h1>?True or False?</h1>
+      <Questions />
+      <GameOver />
     </>
   )
 }
