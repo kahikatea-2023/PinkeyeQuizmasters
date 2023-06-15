@@ -2,7 +2,7 @@ exports.up = function (knex) {
   return knex.schema.createTable('questions', (table) => {
     table.increments('id')
     table.string('question')
-    table.boolean('answer')
+    table.string('answer')
     table.string('fact')
   })
 }

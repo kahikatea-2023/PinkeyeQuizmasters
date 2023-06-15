@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getQuestions } from '../../server/db/questions'
 import Question from '../../models/question'
+import { fetchedQuestions } from '../apis/questionsApi'
 
 export const fetchQuestions = createAsyncThunk(
   'questions/fetchQuestions',
   async () => {
-    return await getQuestions()
+    return await fetchedQuestions()
   }
 )
 

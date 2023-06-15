@@ -1,41 +1,49 @@
 import React, { useEffect, useState } from 'react'
-import { fetchQuestions } from '../apis/questionsApi'
-import Question from '../../models/question'
 import { useAppDispatch, useAppSelector } from '../hooks'
+import { fetchQuestions } from '../slices/questionsSlice'
+import GameOver from './GameOver'
 
 function Quiz() {
   const dispatch = useAppDispatch()
   const questions = useAppSelector((state) => state.questions)
+  const [currentQuestionId, setCurrentQuestionId] = useState(1)
+  let isRight = 'right'
 
   useEffect(() => {
     dispatch(fetchQuestions())
   }, [])
-  // async function refetchQuestion() {}
 
-  // const handleAnswer = (answer: boolean, id: number) => {
-  //   if (answer === questions[id - 1].answer) {
-  //     refetchQuestion() // Fetch a new question
-  //   } else {
-  //     // Handle game over logic here
-  //     // Show game over component or reset the game state
-  //   }
-  // }
+  const currentQuestion = questions.find(
+    (question) => question.id === currentQuestionId
+  )
+
+  function handleAnswer(answer: string) {
+    if (answer === currentQuestion?.answer) {
+      isRight = 'right'
+      setCurrentQuestionId(currentQuestionId + 1)
+    } else {
+      isRight = 'wrong'
+    }
+    console.log('clicked', answer, isRight)
+    console.log(currentQuestion?.answer)
+  }
+  if (!currentQuestion) {
+    return null
+  }
 
   return (
     <>
+      {isRight === 'right' ? (
+        <div>
+          <p>{currentQuestion.question}</p>
+        </div>
+      ) : (
+        <GameOver />
+      )}
       <div>
-        {questions.map((question) => (
-          <>
-            <p>{question.question}</p>
-            <p>{question.answer}</p>
-          </>
-        ))}
+        <button onClick={() => handleAnswer('true')}>True</button>
+        <button onClick={() => handleAnswer('false')}>False</button>
       </div>
-      {/* <div>
-        <h2>{question.question}</h2>
-        <button onClick={() => handleAnswer(true, question.id)}>True</button>
-        <button onClick={() => handleAnswer(false, question.id)}>False</button>
-      </div> */}
     </>
   )
 }

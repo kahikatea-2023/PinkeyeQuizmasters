@@ -8,7 +8,7 @@ const rootUrl = '/api/v1/questions'
 //   { id: 3, question: 'Quinn can fly.', answer: true },
 // ]
 
-export async function getQuestions() {
+export async function fetchedQuestions() {
   const res = await request.get(rootUrl)
   return res.body
 }

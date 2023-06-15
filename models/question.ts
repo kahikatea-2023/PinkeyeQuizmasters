@@ -1,6 +1,6 @@
 export default interface Question {
   id: number
   question: string
-  answer: boolean
+  answer: string
   fact: string
 }
