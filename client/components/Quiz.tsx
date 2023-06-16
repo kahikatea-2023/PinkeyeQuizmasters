@@ -18,6 +18,7 @@ function Quiz() {
 
   const [sound, setSound] = useState('')
   const [playSound, setPlaySound] = useState(false)
+  // const [backgroundSound, setBackgroundSound] = useState(true)
 
   useEffect(() => {
     dispatch(fetchQuestions())
@@ -39,8 +40,8 @@ function Quiz() {
       }
     } else {
       setIsRight('wrong')
-      stopSound()
       setSound(gameOverSound)
+      // setBackgroundSound(false)
     }
     setPlaySound(true)
   }
@@ -73,6 +74,9 @@ function Quiz() {
             <button className="right" onClick={() => handleAnswer('false')}>
               False
             </button>
+            <audio ref={backgroundAudioRef} autoPlay loop>
+              <source src={backgroundSound} type="audio/mpeg" />
+            </audio>
           </div>
         </>
       ) : (
@@ -84,9 +88,6 @@ function Quiz() {
           <source src={sound} type="audio/mpeg" />
         </audio>
       )}
-      <audio ref={backgroundAudioRef} autoPlay loop>
-        <source src={backgroundSound} type="audio/mpeg" />
-      </audio>
     </>
   )
 }
