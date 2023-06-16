@@ -50,7 +50,7 @@ function Quiz() {
           </div>
         </>
       ) : (
-        <GameOver restartGame={() => setCurrentQuestionId(1)} />
+        <GameOver />
       )}
     </>
   )
