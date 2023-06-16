@@ -38,14 +38,15 @@ function Quiz() {
             <div className="question">
               <p>{currentQuestion.question}</p>
             </div>
-            <div className="buttons">
-              <button className="button" onClick={() => handleAnswer('true')}>
-                True
-              </button>
-              <button className="button" onClick={() => handleAnswer('false')}>
-                False
-              </button>
-            </div>
+          </div>
+
+          <div className="buttons">
+            <button className="left" onClick={() => handleAnswer('true')}>
+              True
+            </button>
+            <button className="right" onClick={() => handleAnswer('false')}>
+              False
+            </button>
           </div>
         </>
       ) : (

@@ -1,5 +1,3 @@
-import React from 'react'
-
 interface GameOverProps {
   restartGame: () => void
 }
@@ -11,9 +9,16 @@ function GameOver({ restartGame }: GameOverProps) {
 
   return (
     <div>
-      <div>
+      <div className="game-over-section">
         <img className="game-over" src="/images/gameOver.gif" alt="Game Over" />
-        <button onClick={playAgain}>Play Again</button>
+        <button className="play-again" onClick={playAgain}>
+          Play Again
+        </button>
+      </div>
+
+      <div className="buttons">
+        <button className="left">True</button>
+        <button className="right">False</button>
       </div>
     </div>
   )
