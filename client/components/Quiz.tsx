@@ -4,7 +4,7 @@ import { fetchQuestions } from '../slices/questionsSlice'
 import GameOver from './GameOver'
 import correctSound from '../../public/music/correct.mp3'
 import gameOverSound from '../../public/music/gameOver.mp3'
-import backgroudSound from '../../public/music/themeMusic.mp3'
+import backgroundSound from '../../public/music/themeMusic.mp3'
 
 function Quiz() {
   const dispatch = useAppDispatch()
@@ -14,6 +14,7 @@ function Quiz() {
   const [isRight, setIsRight] = useState('right')
 
   const audioRef = useRef<HTMLAudioElement | null>(null)
+  const backgroundAudioRef = useRef<HTMLAudioElement | null>(null)
 
   const [sound, setSound] = useState('')
   const [playSound, setPlaySound] = useState(false)
@@ -29,17 +30,18 @@ function Quiz() {
   function handleAnswer(answer: string) {
     stopSound()
     if (answer === currentQuestion?.answer) {
-      if (currentQuestionId === 19) {
-        
+      if (currentQuestionId === 20) {
+        setCurrentQuestionId(1)
+      } else {
+        setIsRight('right')
+        setCurrentQuestionId(currentQuestionId + 1)
+        setSound(correctSound)
       }
-      setIsRight('right')
-      setCurrentQuestionId(currentQuestionId + 1)
-      setSound(correctSound)
     } else {
       setIsRight('wrong')
+      stopSound()
       setSound(gameOverSound)
     }
-    console.log(isRight)
     setPlaySound(true)
   }
 
@@ -82,6 +84,9 @@ function Quiz() {
           <source src={sound} type="audio/mpeg" />
         </audio>
       )}
+      <audio ref={backgroundAudioRef} autoPlay loop>
+        <source src={backgroundSound} type="audio/mpeg" />
+      </audio>
     </>
   )
 }
