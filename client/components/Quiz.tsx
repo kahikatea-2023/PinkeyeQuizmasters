@@ -34,13 +34,19 @@ function Quiz() {
     <>
       {isRight === 'right' ? (
         <>
-        <div>
-          <p>{currentQuestion.question}</p>
-        </div>
-        <div>
-          <button onClick={() => handleAnswer('true')}>True</button>
-          <button onClick={() => handleAnswer('false')}>False</button>
-        </div>
+          <div className="quiz-section">
+            <div className="question">
+              <p>{currentQuestion.question}</p>
+            </div>
+            <div className="buttons">
+              <button className="button" onClick={() => handleAnswer('true')}>
+                True
+              </button>
+              <button className="button" onClick={() => handleAnswer('false')}>
+                False
+              </button>
+            </div>
+          </div>
         </>
       ) : (
         <GameOver restartGame={() => setCurrentQuestionId(1)} />

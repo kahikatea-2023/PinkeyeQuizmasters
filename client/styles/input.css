@@ -6,12 +6,65 @@
 body {
   font-family: 'ArcadeClassic', sans-serif;
   font-size: 20px;
-  background-color: #FF00FF;
-  /* color: #cdff03; */
+  color: white;
+  background-color: black;
+  background-image: url('../../public/images/background.png');
+  background-repeat: no-repeat;
+  background-size: 1000px;
+  background-position: center bottom;
+  height: 1000px;
+  width: 1000px;
 }
 
 .game-over {
   margin: auto;
   margin-top: 180px;
 
+}
+
+.header {
+  text-align: center;
+  font-size: 80px;
+  margin-top: 120px;
+  width: 100%;
+  position: absolute;
+}
+
+.question {
+  width: 350px;
+  height: 250px;
+  position: absolute;
+  top: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+
+}
+p {
+  font-size: 35px;
+}
+
+.quiz-section {
+  text-align: center;
+  font-size: 40px;
+  margin: 22% 0 0 30%;
+  width: 40%;
+  position: absolute;
+}
+
+.buttons {
+  width: 500px;
+  position: absolute;
+  top: 465px;
+  left: 50%;
+  transform: translateX(-50%);
+
+}
+
+.button {
+margin-left: 50px;
+padding: 5px;
+width: 150px;
+background-color: brown;
+border-radius: 50px;
+font-size: 35px;
 }
