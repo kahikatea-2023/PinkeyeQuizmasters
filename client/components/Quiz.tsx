@@ -6,7 +6,8 @@ import GameOver from './GameOver'
 function Quiz() {
   const dispatch = useAppDispatch()
   const questions = useAppSelector((state) => state.questions)
-  const [currentQuestionId, setCurrentQuestionId] = useState(1)
+  const randomNum = Math.floor(Math.random() * 20) + 1
+  const [currentQuestionId, setCurrentQuestionId] = useState(randomNum)
   const [isRight, setIsRight] = useState('right')
 
   useEffect(() => {
@@ -24,7 +25,6 @@ function Quiz() {
     } else {
       setIsRight('wrong')
     }
-    console.log(isRight)
   }
   if (!currentQuestion) {
     return null
