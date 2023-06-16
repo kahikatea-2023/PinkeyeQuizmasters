@@ -7,7 +7,7 @@ function Quiz() {
   const dispatch = useAppDispatch()
   const questions = useAppSelector((state) => state.questions)
   const [currentQuestionId, setCurrentQuestionId] = useState(1)
-  let isRight = 'right'
+  const [isRight, setIsRight] = useState('right')
 
   useEffect(() => {
     dispatch(fetchQuestions())
@@ -19,13 +19,12 @@ function Quiz() {
 
   function handleAnswer(answer: string) {
     if (answer === currentQuestion?.answer) {
-      isRight = 'right'
+      setIsRight('right')
       setCurrentQuestionId(currentQuestionId + 1)
     } else {
-      isRight = 'wrong'
+      setIsRight('wrong')
     }
-    console.log('clicked', answer, isRight)
-    console.log(currentQuestion?.answer)
+    console.log(isRight)
   }
   if (!currentQuestion) {
     return null
@@ -34,16 +33,24 @@ function Quiz() {
   return (
     <>
       {isRight === 'right' ? (
-        <div>
-          <p>{currentQuestion.question}</p>
-        </div>
+        <>
+          <div className="quiz-section">
+            <div className="question">
+              <p>{currentQuestion.question}</p>
+            </div>
+            <div className="buttons">
+              <button className="button" onClick={() => handleAnswer('true')}>
+                True
+              </button>
+              <button className="button" onClick={() => handleAnswer('false')}>
+                False
+              </button>
+            </div>
+          </div>
+        </>
       ) : (
-        <GameOver />
+        <GameOver restartGame={() => setCurrentQuestionId(1)} />
       )}
-      <div>
-        <button onClick={() => handleAnswer('true')}>True</button>
-        <button onClick={() => handleAnswer('false')}>False</button>
-      </div>
     </>
   )
 }
