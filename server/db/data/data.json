@@ -1,0 +1,7 @@
+{
+  "soundFiles": [
+   "/public/music/correct.mp3",
+   "/public/music/gameOver.mp3",
+   "/public/music/themeMusic.mp3"
+  ]
+}
