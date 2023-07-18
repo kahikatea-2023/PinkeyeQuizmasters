@@ -514,15 +514,24 @@ video {
 }
 
 body {
+  display: flex;
+    align-items: center;
+    justify-content: center;
   font-family: 'ArcadeClassic', sans-serif;
   font-size: 20px;
   color: white;
   background-color: black;
   background-image: url('../../public/images/background.png');
   background-repeat: no-repeat;
-  background-size: auto 100%;
-  background-position: center bottom;
+  background-size: auto 1000px;
+  background-position: center center;
   height: 100vh;
+}
+
+#app {
+  position: relative;
+  width: 670px;
+  height: 1000px;
 }
 
 .game-over {
@@ -546,17 +555,16 @@ body {
 }
 
 .header {
+  position: absolute;
   text-align: center;
   font-size: 80px;
-  margin-top: 120px;
+  top: 13%;
   width: 100%;
-  position: absolute;
 }
 
 .question {
   width: 350px;
   height: 250px;
-  position: absolute;
   top: 50px;
   left: 50%;
   transform: translateX(-50%);
@@ -571,12 +579,10 @@ p {
   font-size: 40px;
   margin: 22% 0 0 30%;
   width: 40%;
-  position: absolute;
 }
 
 .buttons {
   width: 500px;
-  position: absolute;
   top: 789px;
   left: 50%;
   transform: translateX(-50%);
